@@ -2,7 +2,7 @@ const User = require('../models/User')
 const bcrypt = require('bcrypt');
 const { errorHandler } = require('../utils/error.js');
 const jwt = require('jsonwebtoken');
-const { use } = require('../routes/auth.route');
+
 
 
 const register = async (req, res, next) => {
