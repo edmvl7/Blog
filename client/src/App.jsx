@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/home" element={<Home/>} />
             <Route path="/about" element={<About/>} />
           </Routes>
+          <Footer/>
       </BrowserRouter>
   )
 }
