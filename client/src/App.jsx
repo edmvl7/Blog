@@ -8,7 +8,7 @@ import Home from "./pages/Home"
 import About from "./pages/About"
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-
+import PrivateRoute from './components/PrivateRoute'
 
 
 function App() {
@@ -20,7 +20,9 @@ function App() {
             <Route path="/" element={<Landing/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
-            <Route path="/dashboard" element={<Dashboard/>} />
+            <Route element={<PrivateRoute/>}>
+              <Route path="/dashboard" element={<Dashboard/>} />
+            </Route>
             <Route path="/home" element={<Home/>} />
             <Route path="/about" element={<About/>} />
           </Routes>
