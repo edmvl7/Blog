@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CiMenuFries } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
+import { useSelector } from 'react-redux'
 
 const Navbar = () => {
     const [navbar, setNavbar] = useState(false);
+    const { currentUser } = useSelector(state => state.user)
+
     const links = [
         {
             id: 1,
@@ -19,6 +22,24 @@ const Navbar = () => {
         {
             id: 3,
             title: "Sign-up",
+            url: "/register"
+        },
+    ]
+
+    const linksUser = [
+        {
+            id: 1,
+            title: "explore",
+            url: "/explore"
+        },
+        {
+            id: 2,
+            title: "My profile",
+            url: "/login"
+        },
+        {
+            id: 3,
+            title: "Post",
             url: "/register"
         },
     ]
@@ -58,7 +79,16 @@ const Navbar = () => {
 
                     <ul className="h-screen md:h-auto items-center justify-end md:flex ">
                        
-                           {
+                       {currentUser ? (
+                         linksUser.map((co) => (
+                            <li className="pb-4  hover:px-3 hover:uppercase text-xl	 md:text-base text-black py-6 md:px-6  border-b-2 md:border-b-0   border-gray-400">
+                                <Link key={co.id} to={co.url} onClick={() => setNavbar(!navbar)}>
+                                    {co.title}
+                                </Link>
+                            </li>
+                         ))
+                       ):(
+                           
                             links.map((link) => (
                                 <li className="pb-4  hover:px-3 hover:uppercase text-xl	 md:text-base text-black py-6 md:px-6  border-b-2 md:border-b-0   border-gray-400">
                                     <Link key={link.id} to={link.url}  onClick={() => setNavbar(!navbar)}>
@@ -66,8 +96,8 @@ const Navbar = () => {
                                     </Link>
                                 </li>
                             ))
-                           }
-                    
+                           
+                           )}
                     </ul>  
                  
                 </div>
