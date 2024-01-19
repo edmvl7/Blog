@@ -65,8 +65,8 @@ const Register = () => {
           </p>
 
           <div className="flex justify-center items-center space-x-3 mt-4 text-sm">
-                    <p>Vous avez déjà un compte?</p>
-                    <p className="text-gray-500 hover:text-black "><Link to="/register">Se connecter</Link></p>
+                    <p>You already have an account? </p>
+                    <p className="text-gray-500 hover:text-black "><Link to="/register">Log in</Link></p>
               </div>
           
 
