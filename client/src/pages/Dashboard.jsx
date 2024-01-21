@@ -1,8 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import Sidebar from '../components/Sidebar'
+import Profile from '../components/Profile'
 
 const Dashboard = () => {
+  const location  = useLocation()
+  const [tab, setTab] = useState('')
+
+  useEffect(() => {
+    const urlParams = new  URLSearchParams(location.search)
+    const tabFromUrl = urlParams.get('tab');
+    if (tabFromUrl) {
+      setTab(tabFromUrl);
+      console.log('Tab from URL:', tabFromUrl);
+    }
+  }, [location.search]);
+
   return (
-    <div>Dashboard</div>
+
+    <>
+      <div className='min-h-screen flex flex-col md:flex-row'>
+        <div className='md:w-56'>
+          <Sidebar/>
+        </div>
+        
+        {tab === 'profile' && <Profile/>}
+      </div>
+     
+    </>
+
+    
   )
 }
 
